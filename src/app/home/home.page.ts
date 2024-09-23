@@ -1,6 +1,15 @@
 import { Component } from '@angular/core';
 import * as L from 'leaflet';
 
+const iconDefault = L.icon({
+  iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
+  shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
+  iconSize: [25, 41], // ukuran ikon
+  iconAnchor: [12, 41], // titik anchor yang sesuai untuk posisi ikon
+  popupAnchor: [1, -34], // posisi popup di atas marker
+  shadowSize: [41, 41], // ukuran bayangan
+});
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -52,7 +61,8 @@ export class HomePage {
 
 
     // Menambahkan marker di lokasi Tugu Jogja
-    const tuguJogjaMarker = L.marker([-7.7829, 110.3671]).addTo(this.map);
+    const tuguJogjaMarker = L.marker([-7.7829, 110.3671],
+      { icon: iconDefault }).addTo(this.map);
 
     // Menambahkan popup dengan gambar dan teks
     const popupContent = `
